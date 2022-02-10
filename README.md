@@ -1,7 +1,15 @@
 # Installation
-run :
+run if you using docker :
 ```
 docker-compose up -d
+```
+run migration :
+```
+php artisan migrate
+```
+instal laravel passport :
+```
+php artisan passport:install
 ```
 # _API Documentation_
 
