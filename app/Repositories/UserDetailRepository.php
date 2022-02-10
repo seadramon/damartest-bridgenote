@@ -38,6 +38,8 @@ class UserDetailRepository implements UserDetailRepositoryInterface
 
 			return $data->save();
 		}
+
+		return false;
 	}
 
 	public function delete($id)

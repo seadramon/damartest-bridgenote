@@ -114,6 +114,12 @@ Headers :
     Authorization = Bearer [generated-token]
 method : POST
 ```
+parameter:
+```
+user_id : [integer] ( from users table )
+status : [string] ( active or inactive )
+position : [string]
+```
 response:
 ```
 {
@@ -130,6 +136,12 @@ Headers :
     Content-Type = application/x-www-form-urlencoded
     Authorization = Bearer [generated-token]
 method : PUT
+```
+parameter:
+```
+user_id : [integer] ( from users table )
+status : [string] ( active or inactive )
+position : [string]
 ```
 response:
 ```

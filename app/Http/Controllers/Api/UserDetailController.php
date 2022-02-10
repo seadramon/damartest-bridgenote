@@ -18,8 +18,10 @@ class UserDetailController extends Controller
         $this->repository = $repository;
     }
 
+    /*Get data Collection*/
     public function index(Request $request)
     {
+        // check pagination parameter
         $paginate = !empty($request->paginate)?$request->paginate:0;
 
         $data = $this->repository->getAll($paginate);
@@ -49,10 +51,17 @@ class UserDetailController extends Controller
 
         $data = $this->repository->save($request->all());
 
-        return response([
-            'status' => 'success', 
-            'message' => 'User Detail Data saved successfully'
-        ], 200);
+        if ($data) {
+            return response([
+                'status' => 'success', 
+                'message' => 'User Detail Data saved successfully'
+            ], 200);
+        } else {
+            return response([
+                'status' => 'error', 
+                'message' => 'User Detail Data save failed'
+            ], 500);
+        }
     }
 
     /**
@@ -91,10 +100,17 @@ class UserDetailController extends Controller
 
         $data = $this->repository->update($id, $request->all());
 
-        return response([
-            'status' => 'success', 
-            'message' => 'User Detail Data updated successfully'
-        ], 200);
+        if ($data) {
+            return response([
+                'status' => 'success', 
+                'message' => 'User Detail Data updated successfully'
+            ], 200);
+        } else {
+            return response([
+                'status' => 'error', 
+                'message' => 'User Detail Data update failed'
+            ], 500);
+        }
     }
 
     /**
