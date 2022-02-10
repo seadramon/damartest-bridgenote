@@ -1,0 +1,49 @@
+version: '3.7'
+
+services:
+  #PHP Service
+  phpfpm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: phpfpm_image
+    container_name: phpfpm_damartest
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - ./scripts/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+      - ./:/var/www
+    networks:
+      - intra_net
+  # NGINX Service
+  nginx:
+    container_name: nginx_damartest
+    image: nginx:alpine
+    restart: unless-stopped
+    volumes:
+      - ./scripts/nginx/:/etc/nginx/conf.d
+      - ./:/var/www
+    ports:
+      - 80:80
+    networks:
+      - intra_net
+  #MySQL Service
+  db:
+    image: mysql:5.7
+    container_name: db_damartest
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: companydb
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: secret
+    volumes:
+      - ./scripts/mysql/my.cnf:/etc/mysql/my.cnf
+    networks:
+      - intra_net
+networks:
+  intra_net:
+    name: internal_network
