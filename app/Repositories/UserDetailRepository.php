@@ -13,7 +13,7 @@ class UserDetailRepository implements UserDetailRepositoryInterface
 	}
 
 	public function getUserDetail($id){
-		return UserDetail::findOrFail($id);
+		return UserDetail::find($id);
 	}
 
 	public function save(array $userDetails)

@@ -74,7 +74,14 @@ class UserDetailController extends Controller
     {
         $data = $this->repository->getUserDetail($id);
 
-        return new UserDetailResource($data);
+        if ($data) {
+            return new UserDetailResource($data);
+        } else {
+            return response([
+                'status' => 'not found', 
+                'message' => "Data User Detail not found"
+            ], 404);
+        }
     }
 
     /**
