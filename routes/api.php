@@ -26,6 +26,6 @@ Route::middleware('auth:api')->group(function () {
 
 	Route::apiResource('user-detail', UserDetailController::class);
 
-	Route::get('user',			UserController::class, 'index');
+	Route::get('user',			[UserController::class, 'index']);
 
 });
