@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\PassportAuthController;
 use App\Http\Controllers\Api\UserDetailController;
+use App\Http\Controllers\Api\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +25,7 @@ Route::post('login', [PassportAuthController::class, 'login']);
 Route::middleware('auth:api')->group(function () {
 
 	Route::apiResource('user-detail', UserDetailController::class);
+
+	Route::get('user',			UserController::class, 'index');
 
 });
