@@ -15,7 +15,9 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(
             'App\Repositories\UserDetailRepositoryInterface',
-            'App\Repositories\UserDetailRepository'
+            'App\Repositories\UserDetailRepository',
+            'App\Repositories\UserRepositoryInterface',
+            'App\Repositories\UserRepository'
         );
     }
 
