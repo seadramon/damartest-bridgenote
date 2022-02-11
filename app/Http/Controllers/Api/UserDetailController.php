@@ -94,7 +94,7 @@ class UserDetailController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'user_id' => 'required|unique:user_details,user_id,' . $id,
+            'user_id' => 'required|exists:App\Models\User,id|unique:user_details,user_id,' . $id,
             'status' => 'required'
         ]);
 
