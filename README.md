@@ -147,7 +147,6 @@ method : PUT
 ```
 parameter:
 ```
-user_id : [integer] ( from users table )
 status : [string] ( active or inactive )
 position : [string]
 ```

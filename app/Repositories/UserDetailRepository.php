@@ -32,7 +32,7 @@ class UserDetailRepository implements UserDetailRepositoryInterface
 		$data = UserDetail::find($id);
 
 		if ($data) {
-			$data->user_id = $userDetails['user_id'];
+			// $data->user_id = $userDetails['user_id'];
 			$data->status = $userDetails['status'];
 			$data->position = $userDetails['position'];
 
