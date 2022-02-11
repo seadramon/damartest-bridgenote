@@ -1,5 +1,6 @@
 <?php namespace App\Repositories;
 
+use App\Models\User;
 use App\Models\UserDetail;
 
 class UserDetailRepository implements UserDetailRepositoryInterface
@@ -18,13 +19,19 @@ class UserDetailRepository implements UserDetailRepositoryInterface
 
 	public function save(array $userDetails)
 	{
-		$data = new UserDetail;
-// dd($userDetails['user_id']);
-		$data->user_id = $userDetails['user_id'];
-		$data->status = $userDetails['status'];
-		$data->position = $userDetails['position'];
+		$cek = User::find($userDetails['user_id']);
 
-		return $data->save();
+		if ($cek) {
+			$data = new UserDetail;
+
+			$data->user_id = $userDetails['user_id'];
+			$data->status = $userDetails['status'];
+			$data->position = $userDetails['position'];
+
+			return $data->save();
+		} else {
+			return false;
+		}
 	}
 
 	public function update($id, array $userDetails)

@@ -38,7 +38,7 @@ class UserDetailController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'user_id' => 'required|unique:user_details',
+            'user_id' => 'required|unique:user_details|exists:users',
             'status' => 'required'
         ]);
 
