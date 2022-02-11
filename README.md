@@ -51,6 +51,32 @@ respones:
   "token": [string]
 }
 ```
+#### List User
+```
+EndPoint : api/user
+Headers : 
+    Accept = application/json
+    Authorization = Bearer [generated-token]
+method : GET
+parameters(optional) :  
+    paginate [integer]
+```
+response:
+```
+{
+	"data": [
+		{
+			"id": [integer],
+			"name": [string],
+			"email": [string],
+			"email_verified_at": null,
+			"created_at": [datetime],
+			"updated_at": [datetime]
+		}
+	]
+}
+``` 
+
 
 ## User Detail
 
