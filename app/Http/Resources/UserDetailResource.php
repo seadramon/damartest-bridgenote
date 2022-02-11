@@ -18,8 +18,12 @@ class UserDetailResource extends JsonResource
         // return parent::toArray($request);
         return [
             'user' => new UserResource($this->user),
+            'id' => $this->id,
+            'user_id' => $this->user_id,
             'status' => $this->status,
             'position' => $this->position,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at
         ];
     }
 }
